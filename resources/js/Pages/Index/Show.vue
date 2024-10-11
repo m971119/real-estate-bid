@@ -1,8 +1,8 @@
 <template>
-    <div>Show</div>
-    <Link href="/">Main</Link>
+  <div>Show</div>
+  <Link href="/">Main</Link>
 </template>
 
 <script setup>
-    import { Link } from '@inertiajs/vue3'
+import { Link } from '@inertiajs/vue3'
 </script>
