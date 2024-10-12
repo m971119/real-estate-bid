@@ -1,11 +1,11 @@
-import eslintPluginVue from 'eslint-plugin-vue'
+import pluginVue from 'eslint-plugin-vue'
 import js from '@eslint/js'
 import globals from 'globals'
 
 
 export default [
   js.configs.recommended,
-  ...eslintPluginVue.configs['flat/recommended'],
+  ...pluginVue.configs['flat/recommended'],
   {
     files: ['**/*.js', '**/*.vue'],
     languageOptions: {
@@ -14,11 +14,10 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.amd,
-        ...globals.es2015,
       },
     },
     plugins: {
-      vue: eslintPluginVue,
+      vue: pluginVue,
     },
     rules: {
       indent: ['error', 2],
@@ -47,4 +46,4 @@ export default [
       ],
       'vue/no-v-text-v-html-on-component': 'off',
     },
-  } ]
+  }]
