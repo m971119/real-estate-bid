@@ -1,19 +1,46 @@
 <template>
-  <Link href="/listing">Listing</Link>&nbsp;
-  <Link href="/listing/create">Create Listing</Link>
-  <header
-    class="border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
-  />
-  <div v-if="flashSuccess">
-    {{ flashSuccess }}
-  </div>
-  <slot>Default</slot>
+  <Box>
+    <header
+      class="w-full border-b dark:bg-gray-900 border-gray-200 bg-white dark:border-gray-900 "
+    >
+      <div class="container mx-auto">
+        <nav class="flex items-center justify-between p-4">
+          <div class="text-lg font-medium">
+            <Link :href="route('listing.index')">Listings</Link>
+          </div>
+          <div
+            class="text-center text-xl font-bold text-indigo-600 dark:text-indigo-300"
+          >
+            <Link :href="route('listing.index')">LaraZillow</Link>
+          </div>
+          <div>
+            <Link
+              :href="route('listing.create')"
+              class="btn-primary"
+            >
+              + New Listing
+            </Link>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="container mx-auto p-4">
+      <div
+        v-if="flashSuccess"
+        class="mb-4 rounded-md border border-green-200 bg-green-50 p-2 shadow-sm dark:border-green-800 dark:bg-green-900"
+      >
+        {{ flashSuccess }}
+      </div>
+      <slot>Default</slot>
+    </main>
+  </Box>
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { Link, usePage } from '@inertiajs/vue3';
+import { computed } from 'vue'
+import { Link, usePage } from '@inertiajs/vue3'
+import Box from '@/Components/UI/Box.vue'
 
-const page = usePage();
-const flashSuccess = computed(() => page.props.flash.success);
+const page = usePage()
+const flashSuccess = computed(() => page.props.flash.success)
 </script>
