@@ -1,9 +1,11 @@
 import pluginVue from 'eslint-plugin-vue'
 import js from '@eslint/js'
 import globals from 'globals'
+import eslintConfigPrettier from 'eslint-config-prettier'
 
 
 export default [
+  eslintConfigPrettier,
   js.configs.recommended,
   ...pluginVue.configs['flat/recommended'],
   {
@@ -14,6 +16,7 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.amd,
+        route: true,
       },
     },
     plugins: {
@@ -46,4 +49,5 @@ export default [
       ],
       'vue/no-v-text-v-html-on-component': 'off',
     },
-  }]
+  },
+]
