@@ -9,5 +9,5 @@ class Listing extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['*'];
+    protected $guarded = [];
 }
