@@ -5,10 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreListingRequest;
 use App\Http\Requests\UpdateListingRequest;
 use App\Models\Listing;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ListingController extends Controller
 {
+    use AuthorizesRequests;
+
+    public function __construct()
+    {
+        $this->authorizeResource(Listing::class, 'listing');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -32,7 +40,7 @@ class ListingController extends Controller
      */
     public function store(StoreListingRequest $request)
     {
-        Listing::create($request->all());
+        $request->user()->listings()->create($request->all());
         return \redirect()->route('listing.index')
             ->with('success', 'Listing Created Successfully!');
     }
