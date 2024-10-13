@@ -9,9 +9,9 @@
             <Link :href="route('listing.index')">Listings</Link>
           </div>
           <div
-            class="text-center text-xl font-bold text-indigo-600 dark:text-indigo-300"
+            class="text-center text-xl font-bold text-cgreen-800 dark:text-cgreen-300"
           >
-            <Link :href="route('listing.index')">LaraZillow</Link>
+            <Link :href="route('listing.index')">BidNest</Link>
           </div>
           <div v-if="user" class="flex items-center gap-4">
             <div class="text-sm text-gray-500">{{ user.name }}</div>
