@@ -8,13 +8,6 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return \inertia('Index/Index', [
-            'message' => 'Hello!'
-        ]);
-    }
-
-    public function show()
-    {
-        return \inertia('Index/Show');
+        return redirect()->route('listing.index');
     }
 }
