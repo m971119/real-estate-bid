@@ -50,7 +50,7 @@ import { Link, usePage } from '@inertiajs/vue3'
 import Box from '@/Components/UI/Box.vue'
 
 defineProps({
-  user: Array,
+  user: Object,
 })
 const page = usePage()
 const flashSuccess = computed(() => page.props.flash.success)

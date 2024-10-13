@@ -14,6 +14,18 @@
     @apply text-sm text-red-500 dark:text-red-400;
   }
 
+  .input-filter-l {
+    @apply rounded-b-md rounded-l-md rounded-r-none rounded-t-md border border-gray-200 text-sm font-medium text-gray-600 placeholder:text-gray-400 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:placeholder:text-gray-600;
+  }
+
+  .input-filter-r {
+    @apply rounded-b-none rounded-l-none rounded-r-md rounded-t-md border border-l-0 border-gray-200 text-sm font-medium text-gray-600 placeholder:text-gray-400 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:placeholder:text-gray-600;
+  }
+
+  .btn-normal {
+    @apply rounded-md bg-gray-600 p-2 font-medium text-white hover:bg-gray-500;
+  }
+
   .btn-primary {
     @apply bg-cgreen-600 hover:bg-cgreen-500 rounded-md p-2 font-medium text-white;
   }
