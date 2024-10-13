@@ -33,8 +33,7 @@ DB_PASSWORD=root
 
 ## Database Migration and Seed
 ```
-php artisan migrate:fresh
-php artisan db:seed --class=ListingSeeder
+php artisan migrate:fresh --seed
 ```
 
 ## Develop
