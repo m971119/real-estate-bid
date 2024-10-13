@@ -1,4 +1,7 @@
-# Real Estate Bid
+# BidNest
+A **VILT** ( Vue + Inertia + Laravel + TailwindCSS ) real estate listing and bidding application
+
+> *bidding part in progress...*
 
 ## Environment Requirements
 - node: v18
@@ -6,22 +9,23 @@
 - MySQL: 8
 
 ## Installation
-
 ```
 npm install
 compser install
 cp .env.example .env
+php artisan key:generate
 ```
 
 ### Set up Database via Docker
 You may choose to set up the database using docker
 ```
-cd realestate-bid
+# make sure you are in the project folder
+cd real-estate-bid
 docker-compose up
 ```
-- After the containers are set up. You may visit the db adminer via localhost:8080 and create a database manually
+- After the containers are set up. You may visit the db adminer via localhost:8080.
 
-`.env`
+`.env` (If you choose to use docker for db)
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
