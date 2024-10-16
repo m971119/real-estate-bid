@@ -3,15 +3,25 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\RealtorListingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Login Required
 Route::middleware('auth')->group(function () {
-    Route::resource('listing', ListingController::class)
-        ->except(['index', 'show']);
     Route::delete('logout', [AuthController::class, 'destroy'])
         ->name('logout');
+    Route::prefix('realtor')->name('realtor.')
+        ->group(function () {
+            Route::name('listing.restore')
+            ->put(
+                'listing/{listing}/restore',
+                [RealtorListingController::class, 'restore']
+            )->withTrashed();
+            Route::resource('listing', RealtorListingController::class)
+            ->only(['index', 'destroy', 'edit', 'update', 'create', 'store'])
+            ->withTrashed();
+        });
 });
 
 Route::get('/', [IndexController::class, 'index']);
