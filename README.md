@@ -14,6 +14,7 @@ npm install
 compser install
 cp .env.example .env
 php artisan key:generate
+php artisan storage:link
 ```
 
 ### Set up Database via Docker
