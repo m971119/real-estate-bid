@@ -38,10 +38,9 @@
       >
         <img :src="image.src" class="rounded-md" />
         <Link
-          :href="route('realtor.listing.image.destroy', { listing: props.listing.id, image: image.id })"
-          method="delete"
           as="button"
           class="mt-2 btn-outline text-xs"
+          @click="handleDestroy(image)"
         >
           Delete
         </Link>
@@ -80,4 +79,10 @@ const addFiles = (event) => {
   form.images = event.target.files
 }
 const reset = () => form.reset('images')
+const handleDestroy = (image) => {
+  router.delete(
+    route('realtor.listing.image.destroy', { listing: props.listing.id, image: image.id }),
+    { preserveScroll: true },
+  )
+}
 </script>
