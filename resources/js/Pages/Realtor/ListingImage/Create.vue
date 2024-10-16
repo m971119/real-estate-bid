@@ -5,7 +5,7 @@
       <section class="flex items-center gap-2 my-4">
         <input
           class="border rounded-md file:px-4 file:py-2 border-gray-200 dark:border-gray-700 file:text-gray-700 file:dark:text-gray-400 file:border-0 file:bg-gray-100 file:dark:bg-gray-800 file:font-medium file:hover:bg-gray-200 file:dark:hover:bg-gray-700 file:hover:cursor-pointer file:mr-4"
-          type="file" multiple @input="addFiles"
+          type="file" multiple accept="image/*" @input="addFiles"
         />
         <button
           type="submit"
@@ -53,15 +53,15 @@
 <script setup>
 import { computed } from 'vue'
 import Box from '@/Components/UI/Box.vue'
-import { Link, useForm  } from '@inertiajs/vue3'
-// import NProgress from 'nprogress'
+import { Link, useForm, router  } from '@inertiajs/vue3'
+import NProgress from 'nprogress'
 
 const props = defineProps({ listing: Object })
-// router.on('progress', (event) => {
-//   if (event.detail.progress.percentage) {
-//     NProgress.set((event.detail.progress.percentage / 100) * 0.9)
-//   }
-// })
+router.on('progress', (event) => {
+  if (event.detail.progress.percentage) {
+    NProgress.set((event.detail.progress.percentage / 100) * 0.9)
+  }
+})
 
 const form = useForm({
   images: [],
