@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateListingRequest;
 use App\Models\Listing;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class ListingController extends Controller
@@ -45,8 +46,12 @@ class ListingController extends Controller
     public function show(Listing $listing)
     {
         $listing->load(['images']);
+        $offer = !Auth::user() ?
+            null : $listing->offers()->byMe()->first();
+
         return \inertia('Listing/Show', [
             'listing' => $listing,
+            'offerMade' => $offer
         ]);
     }
 }
