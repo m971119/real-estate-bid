@@ -24,16 +24,24 @@ You may choose to set up the database using docker
 cd real-estate-bid
 docker-compose up
 ```
-- After the containers are set up. You may visit the db adminer via localhost:8080.
+- After the containers are set up. You may:
+    1. visit the db adminer via localhost:8080.
+    2. visit mailhog via localhost:8025
 
-`.env` (If you choose to use docker for db)
+`.env`
 ```
+# If you choose to use docker for db
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3308
 DB_DATABASE={YOUR_DATABASE_NAME}
 DB_USERNAME=root
 DB_PASSWORD=root
+
+# Mailhog
+MAIL_MAILER=smtp
+MAIL_HOST=localhost
+MAIL_PORT=1025
 ```
 
 ## Database Migration and Seed
