@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ListingOfferController;
@@ -24,6 +25,7 @@ Route::middleware('auth')->group(function () {
         ->middleware('auth')->name('notification.seen');
     // Realtor Controller
     Route::prefix('realtor')->name('realtor.')
+        ->middleware('verified')
         ->group(function () {
             Route::name('listing.restore')
                 ->put('listing/{listing}/restore', [RealtorListingController::class, 'restore'])
@@ -35,6 +37,14 @@ Route::middleware('auth')->group(function () {
             Route::name('offer.accept')
                 ->put('offer/{offer}/accept', RealtorListingAcceptOfferController::class);
         });
+    // Email Verification
+    Route::get('/email/verify', [EmailVerificationController::class, 'index'])
+        ->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])
+        ->middleware(['signed'])->name('verification.verify');
+    Route::post('/email/verification-notification', [EmailVerificationController::class, 'notify'])
+        ->middleware(['throttle:6,1'])
+        ->name('verification.send');
 });
 
 Route::get('/', [IndexController::class, 'index']);
